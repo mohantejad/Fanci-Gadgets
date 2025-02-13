@@ -81,11 +81,11 @@ if DEBUG is True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
+            'NAME': 'fancidb',
+            'USER': 'fancigadgetspguser',
+            'PASSWORD': 'strongpassword',
             'HOST': config('DB_HOST'),
-            'PORT': config('DB_PORT'),
+            'PORT': 5432,
         }
     }
 
@@ -207,8 +207,23 @@ SIMPLE_JWT = {
 # CORS headers settings
 # https://pypi.org/project/django-cors-headers/
 
-CORS_ALLOW_HEADERS = config('CORS_ALLOW_HEADERS', 'http://localhost:3000, http://127.0.0.1:3000').split(',')
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
 
 
 # Django custom user model
